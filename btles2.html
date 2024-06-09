@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //1
+        const arr1 = [1, 2, 3, 5];
+        const r = arr1.map(item => item * 2)
+        console.log(...r)
+        console.log(r) 
+    //2
+        const arrA = ["Hello", "Xin chào"]
+        const arrB = ["Bonjour", "Óla"]
+        const waysToSayHello = [arrA + arrB]
+        const waysToSayHello2 = [...arrA, ...arrB]
+        console.log(waysToSayHello)
+        console.log(waysToSayHello2)
+    //3
+        const arrX = [0,1,2,3,4,5,6,7,8]
+        const arrSqrt = arrX.map(item => item ** 2)
+        console.log(arrSqrt)
+        function Odds(arrX) {
+            return arrX % 2 == 0
+        }
+        const arrOdds = arrX.filter(Odds)
+        console.log(arrOdds)
+        const arrO = arrX.filter(item => item % 2 == 0)
+        console.log(arrO)
+        
+    //4
+        function filterRange(arr, a, b) {
+            const filterArr = arr.slice(a, b)
+            return filterArr
+        }
+        const arr = [1, 5, 4, 6]
+        const a = 0
+        const b = 2
+        const newArr = filterRange(arr, a, b)
+        console.log(newArr)
+    //5
+        const newArr1  = arr.slice(a, b-1)
+        console.log(newArr1)
+        console.log(arr.slice(a, b-1))
+
+    //6
+        let student = [
+            {
+                name: "Duong",
+                age: 11,
+                hobbies: ["video game","sleep","learn"]
+            },
+            {
+                name: "Dong",
+                age: 12,
+                hobbies: ["video game","sick","study"]
+            },
+            {
+                name: "Minh",
+                age: 13,
+                hobbies: ["video game","sick","learn"]
+            },
+            {
+                name: "Thanh",
+                age: 9,
+                hobbies: ["play game","sleep","learn"]
+            },
+            {
+                name: "Hung",
+                age: 11,
+                hobbies: ["play game","sick","study"]
+            }
+        ]
+    // Cau 1
+    function ktra1(age) {
+        let hs = student.filter(s => s.age === age)
+        var names = hs.map(s => s.name)
+        console.log(names)
+    }
+    ktra1(11)
+    //Cau 2
+    function ktra2(hobby) {
+        let hs1 = student.filter(s => s.hobbies.includes(hobby))
+        hs1.forEach(s => {
+            console.log(`Name: ${s.name}, Hobbies: ${s.hobbies}`);
+        });
+    }
+    ktra2("play game")
+    //Cau 3
+    function ktra3(){
+        let hs2 = student.filter(s => s.hobbies.includes("study"))
+        console.log(hs2)
+    }
+    ktra3()
+    //Cau4
+    function ktra4() {
+        let hs3 = student.map(s => {
+            if (s.age === 11) {
+                return {...s, age: 15}
+            }
+            return s
+        })
+        console.log(hs3)
+    }
+    ktra4()
+    </script>
+</body>
+</html>
