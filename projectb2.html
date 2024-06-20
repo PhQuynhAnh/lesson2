@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-container button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .header-container button:hover {
+            background-color: gray;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .post {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .post-author {
+            font-weight: bold;
+        }
+
+        .post-time {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .post-content {
+            font-size: 1.1em;
+        }
+
+        .new-post-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .new-post {
+            padding: 10px 20px;
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .new-post:hover {
+            background-color: grey;
+        }
+        .scroll-top-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-top-button.show {
+            opacity: 1;
+        }
+
+        .scroll-top-button:hover {
+            background-color: gray;
+        }
+        .post-count {
+            font-size: 1.2em;
+           
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <h1>Reddit</h1>
+        <div class="right">
+            <button class="login" style="background-color: green;">Login</button>
+            <button class="register" style="background-color: blue;">Register</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="new-post-container">
+            <div class="post-count"><span id="post-count">5</span> posts</div>
+            <button class="new-post" onclick="addNewPost()">New Post</button>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <div class="post-author">Posted by u/mwab 1 week ago</div>
+                <div class="post-time">1 week ago</div>
+            </div>
+            <div class="post-content">abc</div>
+            <div class="post-content">delg</div>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <div class="post-author">Posted by u/notch1p 1 week ago</div>
+                <div class="post-time">1 week ago</div>
+            </div>
+            <div class="post-content">test</div>
+            <div class="post-content">text test</div>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <div class="post-author">Posted by u/phucanh 3 weeks ago</div>
+                <div class="post-time">3 weeks ago</div>
+            </div>
+            <div class="post-content">phuc anh</div>
+            <div class="post-content">hi</div>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <div class="post-author">Posted by u/hieu1966hn 3 weeks ago</div>
+                <div class="post-time">3 weeks ago</div>
+            </div>
+            <div class="post-content">JSI14</div>
+            <div class="post-content">This is a code from JS114 class</div>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <div class="post-author">Posted by u/hieu1966hn 2 months ago</div>
+                <div class="post-time">2 months ago</div>
+            </div>
+            <div class="post-content">Test 18/09</div>
+        </div>
+        
+    </div>
+
+    <button class="scroll-top-button" id="scrollTopButton" onclick="scrollToTop()">↑</button>
+
+    <script>
+         let mybutton = document.getElementById("scrollTopButton");
+
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+                } else {
+                     mybutton.style.display = "none";
+                }
+        }
+
+        function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+                function scrollToTop() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+
+        function addNewPost() {
+            const container = document.querySelector('.container');
+            const newPost = document.createElement('div');
+            newPost.className = 'post';
+            newPost.innerHTML = `
+                <div class="post-header">
+                    <div class="post-author">Posted by u/newuser just now</div>
+                    <div class="post-time">just now</div>
+                </div>
+                <div class="post-content">New post content</div>
+                <div class="post-content">More content here</div>
+            `;
+            const firstPost = container.querySelector('.post');
+            container.insertBefore(newPost, firstPost);
+
+            const postCountElement = document.getElementById('post-count');
+            postCountElement.textContent = parseInt(postCountElement.textContent) + 1;
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrollTopButton = document.getElementById('scrollTopButton');
+            if (window.scrollY > 100) {
+                scrollTopButton.classList.add('show');
+            } else {
+                scrollTopButton.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+
+</html>
