@@ -227,6 +227,14 @@
             postCountElement.textContent = parseInt(postCountElement.textContent) + 1;
         }
 
+        window.addEventListener('scroll', () => {
+            const scrollTopButton = document.getElementById('scrollTopButton');
+            if (window.scrollY > 100) {
+                scrollTopButton.classList.add('show');
+            } else {
+                scrollTopButton.classList.remove('show');
+            }
+        });
     </script>
 </body>
 
